@@ -1,6 +1,3 @@
-# Root module for the Pango EKS platform
-# This file will call submodules for VPC, EKS, IAM, ArgoCD, Karpenter, and Load Balancer Controller
-
 module "vpc" {
   source = "./modules/vpc"
 }
