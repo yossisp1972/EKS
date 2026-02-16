@@ -1,18 +1,4 @@
 
-variable "cluster_name" {
-	description = "EKS cluster name"
-	type        = string
-}
-
-variable "oidc_provider" {
-	description = "OIDC provider URL"
-	type        = string
-}
-
-variable "oidc_provider_arn" {
-	description = "OIDC provider ARN"
-	type        = string
-}
 
 # EBS CSI IRSA
 data "aws_iam_policy" "ebs_csi_policy" {
@@ -158,14 +144,3 @@ resource "aws_iam_instance_profile" "karpenter_node_instance_profile" {
 	role = aws_iam_role.karpenter_node_role.name
 }
 
-output "ebs_csi_irsa_arn" {
-	value = module.irsa-ebs-csi.iam_role_arn
-}
-
-output "karpenter_irsa_arn" {
-	value = module.irsa-karpenter.iam_role_arn
-}
-
-output "lb_controller_irsa_arn" {
-	value = module.irsa-aws-load-balancer-controller.iam_role_arn
-}

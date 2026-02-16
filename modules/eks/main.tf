@@ -1,18 +1,4 @@
 
-variable "cluster_name" {
-	description = "EKS cluster name"
-	type        = string
-}
-
-variable "private_subnets" {
-	description = "Private subnet IDs"
-	type        = list(string)
-}
-
-variable "vpc_id" {
-	description = "VPC ID"
-	type        = string
-}
 
 module "eks" {
 	source  = "terraform-aws-modules/eks/aws"
@@ -55,22 +41,3 @@ resource "aws_ec2_tag" "node_security_group" {
 	value       = var.cluster_name
 }
 
-output "cluster_name" {
-	value = module.eks.cluster_name
-}
-
-output "cluster_endpoint" {
-	value = module.eks.cluster_endpoint
-}
-
-output "cluster_certificate_authority_data" {
-	value = module.eks.cluster_certificate_authority_data
-}
-
-output "oidc_provider" {
-	value = module.eks.oidc_provider
-}
-
-output "oidc_provider_arn" {
-	value = module.eks.oidc_provider_arn
-}

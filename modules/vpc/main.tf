@@ -1,13 +1,4 @@
 
-variable "cluster_name" {
-	description = "EKS cluster name"
-	type        = string
-}
-
-variable "region" {
-	description = "AWS region"
-	type        = string
-}
 
 data "aws_availability_zones" "available" {
 	filter {
@@ -117,18 +108,3 @@ resource "aws_vpc_endpoint" "sts" {
 	tags = { Name = "sts-endpoint" }
 }
 
-output "vpc_id" {
-	value = module.vpc.vpc_id
-}
-
-output "private_subnets" {
-	value = module.vpc.private_subnets
-}
-
-output "public_subnets" {
-	value = module.vpc.public_subnets
-}
-
-output "cluster_name" {
-	value = var.cluster_name
-}
