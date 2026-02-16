@@ -1,5 +1,6 @@
 module "vpc" {
   source = "./modules/vpc"
+  cluster_name = var.cluster_name
 }
 
 module "eks" {
@@ -7,7 +8,7 @@ module "eks" {
   vpc_id = module.vpc.vpc_id
   private_subnets = module.vpc.private_subnets
   public_subnets = module.vpc.public_subnets
-  cluster_name = module.vpc.cluster_name
+  cluster_name = var.cluster_name
 }
 
 module "iam" {
