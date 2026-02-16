@@ -25,9 +25,11 @@ module "vpc" {
 	enable_dns_support   = true
 
 	public_subnet_tags = {
+		#use this subnet for external LB
 		"kubernetes.io/role/elb" = 1
 	}
 	private_subnet_tags = {
+		#use this subnet for internal elb
 		"kubernetes.io/role/internal-elb" = 1
 		"karpenter.sh/discovery"          = var.cluster_name
 	}
